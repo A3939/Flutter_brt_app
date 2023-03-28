@@ -39,6 +39,7 @@ dependencies:
   shadow_overlay: ^1.0.5
   colorful_safe_area: ^1.0.0
   get:
+  auto_size_text_field: ^2.2.1
   
 
 dev_dependencies:

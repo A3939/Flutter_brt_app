@@ -2,6 +2,7 @@ import 'package:brt_app/screens/promotions_screen.dart';
 import 'package:brt_app/screens/ticket_view.dart';
 import 'package:brt_app/utils/app_info_list.dart';
 import 'package:brt_app/utils/app_styles.dart';
+import 'package:brt_app/widgets/double_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -50,20 +51,10 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 const Gap(50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Frequently Use Route",
-                      style: Styles.headLine2,
-                    ),
-                    Text(
-                      "View all",
-                      style: Styles.textStyle
-                          .copyWith(color: Styles.secondaryColor),
-                    )
-                  ],
-                )
+                const AppDoubleTextWidget(
+                  bigText: "Most Search",
+                  smallText: "View all",
+                ),
               ],
             ),
           ),
@@ -82,27 +73,11 @@ class HomeScreen extends StatelessWidget {
           ),
           const Gap(50),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Promotions",
-                  style: Styles.headLine2,
-                ),
-                InkWell(
-                  onTap: () {
-                    print("Tapped");
-                  },
-                  child: Text(
-                    "View all",
-                    style:
-                        Styles.textStyle.copyWith(color: Styles.secondaryColor),
-                  ),
-                ),
-              ],
-            ),
-          ),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: const AppDoubleTextWidget(
+                bigText: "Promotions",
+                smallText: "",
+              )),
           const Gap(15),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,

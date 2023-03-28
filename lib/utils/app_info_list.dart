@@ -15,4 +15,52 @@ List<Map<String, dynamic>> ticketList = [
     'departure_time': "09:00 AM",
     "number": 45
   },
+  {
+    'from': {'code': "RNP", 'name': "Ranip Cross"},
+    'to': {'code': "HML", 'name': "Himatlal Park"},
+    'flying_time': '25 Min',
+    'date': "10 MAY",
+    'departure_time': "09:00 AM",
+    "number": 45
+  },
+  {
+    'from': {'code': "RNP", 'name': "Ranip Cross"},
+    'to': {'code': "HML", 'name': "Himatlal Park"},
+    'flying_time': '25 Min',
+    'date': "10 MAY",
+    'departure_time': "09:00 AM",
+    "number": 45
+  },
+  {
+    'from': {'code': "RNP", 'name': "Ranip Cross"},
+    'to': {'code': "HML", 'name': "Himatlal Park"},
+    'flying_time': '25 Min',
+    'date': "10 MAY",
+    'departure_time': "09:00 AM",
+    "number": 45
+  },
+  {
+    'from': {'code': "RNP", 'name': "Ranip Cross"},
+    'to': {'code': "HML", 'name': "Himatlal Park"},
+    'flying_time': '25 Min',
+    'date': "10 MAY",
+    'departure_time': "09:00 AM",
+    "number": 45
+  },
+  {
+    'from': {'code': "RNP", 'name': "Ranip Cross"},
+    'to': {'code': "HML", 'name': "Himatlal Park"},
+    'flying_time': '25 Min',
+    'date': "10 MAY",
+    'departure_time': "09:00 AM",
+    "number": 45
+  },
+  {
+    'from': {'code': "RNP", 'name': "Ranip Cross"},
+    'to': {'code': "HML", 'name': "Himatlal Park"},
+    'flying_time': '25 Min',
+    'date': "10 MAY",
+    'departure_time': "09:00 AM",
+    "number": 45
+  },
 ];
