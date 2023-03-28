@@ -29,49 +29,49 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: _widgetOption[_selectedIndex]),
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.all(12.0),
-          margin: const EdgeInsets.symmetric(
-            horizontal: 24.0,
-            vertical: 24,
+      body: Center(
+        child: _widgetOption[_selectedIndex],
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(12.0),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 24.0,
+          vertical: 24,
+        ),
+        decoration: const BoxDecoration(
+          color: Color(0xff1C203D),
+          borderRadius: BorderRadius.all(
+            Radius.circular(50),
           ),
-          decoration: const BoxDecoration(
-            color: Color(0xff1C203D),
-            borderRadius: BorderRadius.all(
-              Radius.circular(50),
+        ),
+        child: GNav(
+          // backgroundColor: const Color(0xff1C203D),
+          color: const Color(0xFFF4FDFC),
+          activeColor: const Color(0xff1C203D),
+          tabBackgroundColor: const Color(0xFFF4FDFC),
+          gap: 8,
+          onTabChange: (index) {
+            _onItemTapped(index);
+          },
+          padding: const EdgeInsets.all(8),
+          tabs: const [
+            GButton(
+              icon: Icons.home,
+              text: 'Home',
             ),
-          ),
-          child: GNav(
-            backgroundColor: const Color(0xff1C203D),
-            color: const Color(0xFFF4FDFC),
-            activeColor: const Color(0xff1C203D),
-            tabBackgroundColor: const Color(0xFFF4FDFC),
-            gap: 8,
-            onTabChange: (index) {
-              _onItemTapped(index);
-            },
-            padding: const EdgeInsets.all(16),
-            tabs: const [
-              GButton(
-                icon: Icons.home,
-                text: 'Home',
-              ),
-              GButton(
-                icon: Icons.search,
-                text: 'Search',
-              ),
-              GButton(
-                icon: Icons.settings,
-                text: 'Setting',
-              ),
-              GButton(
-                icon: Icons.person,
-                text: 'Profile',
-              ),
-            ],
-          ),
+            GButton(
+              icon: Icons.search,
+              text: 'Search',
+            ),
+            GButton(
+              icon: Icons.settings,
+              text: 'Setting',
+            ),
+            GButton(
+              icon: Icons.person,
+              text: 'Profile',
+            ),
+          ],
         ),
       ),
     );

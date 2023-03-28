@@ -6,23 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key});
+  final Map<String, dynamic> ticket;
+  const TicketView({Key? key, required this.ticket}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     return SizedBox(
-      width: size.width,
-      height: 200,
+      width: size.width * 0.9,
+      height: AppLayout.getHeight(200),
       child: Container(
-        margin: const EdgeInsets.only(left: 16),
+        margin: EdgeInsets.only(right: AppLayout.getHeight(16)),
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
                 color: Styles.primaryColor,
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(AppLayout.getHeight(21))),
               ),
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(AppLayout.getHeight(20)),
               child: Column(
                 children: [
                   Row(
@@ -60,11 +62,24 @@ class TicketView extends StatelessWidget {
                       )
                     ],
                   ),
-                  const Gap(20),
+                  const Gap(25),
+                  Row(
+                    children: List.generate(
+                        550 ~/ 8,
+                        (index) => Expanded(
+                              child: Container(
+                                color: index % 2 == 0
+                                    ? Styles.secondaryColor
+                                    : Styles.primaryColor,
+                                height: 2,
+                              ),
+                            )),
+                  ),
+                  const Gap(30),
                   Row(
                     children: [
                       Text(
-                        "NYC",
+                        ticket['from']['code'],
                         style: Styles.headLine3.copyWith(
                           color: Styles.secondaryColor,
                         ),
@@ -75,7 +90,7 @@ class TicketView extends StatelessWidget {
                         child: Stack(
                           children: [
                             SizedBox(
-                              height: 24,
+                              height: AppLayout.getHeight(24),
                               child: LayoutBuilder(
                                 builder: (BuildContext context,
                                     BoxConstraints constraints) {
@@ -113,7 +128,7 @@ class TicketView extends StatelessWidget {
                       ThickContainer(),
                       Expanded(child: Container()),
                       Text(
-                        "LDN",
+                        ticket['to']['code'],
                         style: Styles.headLine3.copyWith(
                           color: Styles.secondaryColor,
                         ),
@@ -125,9 +140,10 @@ class TicketView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: 100,
+                        // width: 100,
+                        width: AppLayout.getWidth(100),
                         child: Text(
-                          'New-York',
+                          ticket['from']['name'],
                           style: Styles.headLine4
                               .copyWith(color: Styles.secondaryColor),
                         ),
@@ -138,9 +154,10 @@ class TicketView extends StatelessWidget {
                             .copyWith(color: Styles.secondaryColor),
                       ),
                       SizedBox(
-                        width: 100,
+                        // width: 100,
+                        width: AppLayout.getWidth(100),
                         child: Text(
-                          'London',
+                          ticket['to']['name'],
                           textAlign: TextAlign.end,
                           style: Styles.headLine4
                               .copyWith(color: Styles.secondaryColor),
