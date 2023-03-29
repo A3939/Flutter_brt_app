@@ -1,4 +1,5 @@
 import 'package:brt_app/screens/home_screen.dart';
+import 'package:brt_app/screens/profile_screen.dart';
 import 'package:brt_app/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -18,8 +19,8 @@ class _BottomBarState extends State<BottomBar> {
   static final List<Widget> _widgetOption = <Widget>[
     const HomeScreen(),
     const SearchScreen(),
-    const Text("Setting"),
-    const Text("Person"),
+    // const Text("Setting"),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -65,10 +66,6 @@ class _BottomBarState extends State<BottomBar> {
             GButton(
               icon: Icons.search,
               text: 'Search',
-            ),
-            GButton(
-              icon: Icons.settings,
-              text: 'Setting',
             ),
             GButton(
               icon: Icons.person,

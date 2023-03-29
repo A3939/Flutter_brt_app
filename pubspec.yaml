@@ -40,6 +40,9 @@ dependencies:
   colorful_safe_area: ^1.0.0
   get:
   auto_size_text_field: ^2.2.1
+  flutter_screenutil: ^5.7.0
+  line_awesome_flutter: ^2.0.0
+  animated_theme_switcher: ^1.0.5
   
 
 dev_dependencies:

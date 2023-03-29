@@ -26,30 +26,34 @@ class AppIconText extends StatelessWidget {
           AppLayout.getWidth(10),
         ),
       ),
-      child: Row(
-        children: <Widget>[
-          Icon(
-            icon,
-            color: Styles.secondaryColor,
-          ),
-          Gap(
-            AppLayout.getWidth(20),
-          ),
-          // Text(
-          //   text,
-          //   style: Styles.textStyle,
-          // ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.7,
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: text,
-                border: InputBorder.none,
-                // hintStyle: Styles.headLine3.copyWith(fontSize: 18),
+      child: Column(
+        children: [
+          Row(
+            children: <Widget>[
+              Icon(
+                icon,
+                color: Styles.secondaryColor,
               ),
-              style: const TextStyle(fontSize: 20),
-              cursorColor: Styles.secondaryColor,
-            ),
+              Gap(
+                AppLayout.getWidth(20),
+              ),
+              // Text(
+              //   text,
+              //   style: Styles.textStyle,
+              // ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: text,
+                    border: InputBorder.none,
+                    // hintStyle: Styles.headLine3.copyWith(fontSize: 18),
+                  ),
+                  style: const TextStyle(fontSize: 20),
+                  cursorColor: Styles.secondaryColor,
+                ),
+              ),
+            ],
           ),
         ],
       ),
