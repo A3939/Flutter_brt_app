@@ -1,9 +1,6 @@
-import 'dart:js';
-import 'package:brt_app/screens/ticket_view.dart';
+import 'package:brt_app/screens/bus_detail_screen.dart';
 import 'package:brt_app/utils/app_layout.dart';
 import 'package:brt_app/utils/app_styles.dart';
-import 'package:brt_app/widgets/button_widget.dart';
-import 'package:brt_app/widgets/icon_text.dart';
 import 'package:brt_app/widgets/route_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

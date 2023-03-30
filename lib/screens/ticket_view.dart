@@ -12,7 +12,7 @@ class TicketView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     return SizedBox(
-      width: size.width * 0.9,
+      width: AppLayout.getWidth(345),
       height: AppLayout.getHeight(200),
       child: MaterialButton(
         onPressed: () {
@@ -24,14 +24,14 @@ class TicketView extends StatelessWidget {
           );
         },
         child: Container(
-          margin: EdgeInsets.only(right: AppLayout.getHeight(16)),
+          // margin: EdgeInsets.only(right: AppLayout.getHeight(16)),
           child: Column(
             children: [
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Styles.effectColor,
-                    width: 1.0,
+                    width: AppLayout.getWidth(1),
                     style: BorderStyle.solid,
                   ),
                   color: Styles.primaryColor,
