@@ -1,3 +1,4 @@
+import 'package:brt_app/screens/bus_route_screen.dart';
 import 'package:brt_app/screens/home_screen.dart';
 import 'package:brt_app/screens/profile_screen.dart';
 import 'package:brt_app/screens/search_screen.dart';
@@ -21,6 +22,7 @@ class _BottomBarState extends State<BottomBar> {
     const SearchScreen(),
     // const Text("Setting"),
     const ProfileScreen(),
+    // const BusRouteScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -69,7 +71,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
             GButton(
               icon: Icons.person,
-              text: 'Profile',
+              text: 'About',
             ),
           ],
         ),

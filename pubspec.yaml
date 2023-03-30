@@ -43,6 +43,8 @@ dependencies:
   flutter_screenutil: ^5.7.0
   line_awesome_flutter: ^2.0.0
   animated_theme_switcher: ^1.0.5
+  blur: ^3.0.0
+  google_fonts: ^4.0.3
   
 
 dev_dependencies:

@@ -147,7 +147,7 @@ class SearchScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: TextField(
                         controller: end_station,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "End",
                           border: InputBorder.none,
                           // hintStyle: Styles.headLine3.copyWith(fontSize: 18),
