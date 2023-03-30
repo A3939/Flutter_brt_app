@@ -1,14 +1,14 @@
-import 'package:auto_size_text_field/auto_size_text_field.dart';
+import 'package:brt_app/utils/app_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gap/gap.dart';
 
 import '../utils/app_layout.dart';
-import '../utils/app_styles.dart';
 
-class AppIconText extends StatelessWidget {
-  const AppIconText({Key? key, required this.icon, required this.text})
+class AboutListWidget extends StatelessWidget {
+  const AboutListWidget({Key? key, required this.icon, required this.text})
       : super(key: key);
   final IconData icon;
   final String text;
@@ -43,14 +43,9 @@ class AppIconText extends StatelessWidget {
               // ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: text,
-                    border: InputBorder.none,
-                    // hintStyle: Styles.headLine3.copyWith(fontSize: 18),
-                  ),
+                child: Text(
+                  text,
                   style: const TextStyle(fontSize: 20),
-                  cursorColor: Styles.secondaryColor,
                 ),
               ),
             ],
