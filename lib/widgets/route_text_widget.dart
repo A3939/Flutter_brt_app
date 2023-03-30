@@ -12,7 +12,7 @@ class RouteTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: AppLayout.getHeight(16)),
+      margin: EdgeInsets.only(right: AppLayout.getHeight(14)),
       child: Column(
         children: [
           Gap(
