@@ -45,6 +45,7 @@ dependencies:
   animated_theme_switcher: ^1.0.5
   blur: ^3.0.0
   google_fonts: ^4.0.3
+  searchfield: ^0.7.5
   
 
 dev_dependencies:

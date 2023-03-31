@@ -13,13 +13,15 @@ class TicketView extends StatelessWidget {
     final size = AppLayout.getSize(context);
     return SizedBox(
       width: AppLayout.getWidth(345),
-      height: AppLayout.getHeight(200),
+      height: size.width * AppLayout.getHeight(0.63),
       child: MaterialButton(
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => BusRouteScreen(),
+              builder: (context) => BusRouteScreen(
+                ticket: ticket,
+              ),
             ),
           );
         },
@@ -44,22 +46,27 @@ class TicketView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "3D",
-                              style: Styles.headLine2.copyWith(
-                                color: Styles.secondaryColor,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                ticket["number"],
+                                style: Styles.headLine2.copyWith(
+                                  color: Styles.secondaryColor,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Maninagar - Chandkheda Gam",
-                              style: Styles.headLine3.copyWith(
-                                color: Styles.secondaryColor,
+                              Text(
+                                ticket['from']['name'] +
+                                    "-" +
+                                    ticket['to']['name'],
+                                style: Styles.headLine3.copyWith(
+                                  color: Styles.secondaryColor,
+                                ),
+                                softWrap: true,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,

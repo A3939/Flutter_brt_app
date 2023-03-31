@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../utils/app_layout.dart';
 import '../utils/app_styles.dart';
 
 class StationWidget extends StatelessWidget {
-  const StationWidget({super.key});
-
+  const StationWidget({Key? key, required this.station, required this.time})
+      : super(key: key);
+  final String station;
+  final TimeOfDay time;
+  // final String min;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,19 +44,23 @@ class StationWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: Styles.primaryColor,
             ),
+            alignment: Alignment.center,
             padding: EdgeInsets.all(AppLayout.getHeight(20)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Himatala",
-                  style: Styles.headLine2.copyWith(
+                  station,
+                  style: Styles.headLine3.copyWith(
                     color: Styles.secondaryColor,
+                    fontSize: 14,
                   ),
+                  softWrap: true,
                 ),
                 const Gap(7),
                 Text(
-                  "Himatala",
+                  time.toString(),
                   style:
                       Styles.headLine4.copyWith(color: Styles.secondaryColor),
                 ),

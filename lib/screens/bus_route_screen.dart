@@ -14,10 +14,12 @@ import '../widgets/thick_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BusRouteScreen extends StatelessWidget {
-  const BusRouteScreen({super.key});
-
+  const BusRouteScreen({Key? key, required this.ticket}) : super(key: key);
+  final Map<String, dynamic> ticket;
   @override
   Widget build(BuildContext context) {
+    TimeOfDay _cuuTime = TimeOfDay.now();
+
     return Scaffold(
       backgroundColor: Color(0xFFeeedf2),
       appBar: PreferredSize(
@@ -63,7 +65,7 @@ class BusRouteScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "3D",
+                      ticket["number"],
                       style: Styles.headLine,
                     ),
                     Text(
@@ -76,7 +78,7 @@ class BusRouteScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Maninagar - Chandkheda Gam",
+                      ticket['from']['name'] + "-" + ticket['to']['name'],
                       style: Styles.headLine2,
                       textAlign: TextAlign.left,
                     ),
@@ -149,7 +151,7 @@ class BusRouteScreen extends StatelessWidget {
                       // width: 100,
                       width: AppLayout.getWidth(100),
                       child: Text(
-                        "Himatalal",
+                        ticket['from']['code'],
                         style:
                             Styles.headLine4.copyWith(color: Styles.tagColor),
                       ),
@@ -163,7 +165,7 @@ class BusRouteScreen extends StatelessWidget {
                       // width: 100,
                       width: AppLayout.getWidth(100),
                       child: Text(
-                        "Ranip",
+                        ticket['to']['name'],
                         textAlign: TextAlign.end,
                         style:
                             Styles.headLine4.copyWith(color: Styles.tagColor),
@@ -189,16 +191,12 @@ class BusRouteScreen extends StatelessWidget {
             scrollDirection: Axis.vertical,
             // padding: const EdgeInsets.only(left: 20),
             child: Column(
-              children: [
-                StationWidget(),
-                StationWidget(),
-                StationWidget(),
-                StationWidget(),
-                StationWidget(),
-                StationWidget(),
-                StationWidget(),
-                StationWidget(),
-                StationWidget(),
+              children: <Widget>[
+                for (var name in ticket["route"])
+                  StationWidget(
+                    station: name,
+                    time: _cuuTime,
+                  ),
               ],
             ),
           ),

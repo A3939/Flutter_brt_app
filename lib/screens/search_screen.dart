@@ -4,6 +4,7 @@ import 'package:brt_app/utils/app_styles.dart';
 import 'package:brt_app/widgets/route_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:searchfield/searchfield.dart';
 import '../utils/app_info_list.dart';
 import '../widgets/double_text_widget.dart';
 
@@ -35,28 +36,19 @@ class SearchScreen extends StatelessWidget {
           Gap(
             AppLayout.getHeight(20),
           ),
-          // Container(
-          //   child: Row(
-          //     children: [
-          //       Container(
-          //         width: size.width * .44,
-          //         padding:
-          //             EdgeInsets.symmetric(vertical: AppLayout.getHeight(7)),
-          //         decoration: BoxDecoration(
-          //             borderRadius: BorderRadius.circular(
-          //               AppLayout.getHeight(50),
-          //             ),
-          //             color: Styles.primaryColor),
-          //         child: const Center(child: Text("BRT Route Check")),
-          //       ),
-          //     ],
-          //   ),
-          //   decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.circular(
-          //         AppLayout.getHeight(50),
-          //       ),
-          //       color: Styles.tagColor),
-          // )
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  AppLayout.getHeight(50),
+                ),
+                color: Styles.primaryColor),
+            padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(7)),
+            child: const Center(
+              child: Text(
+                "BRT Route Check",
+              ),
+            ),
+          ),
           Gap(
             AppLayout.getHeight(25),
           ),
@@ -82,21 +74,24 @@ class SearchScreen extends StatelessWidget {
                     Gap(
                       AppLayout.getWidth(20),
                     ),
-                    // Text(
-                    //   text,
-                    //   style: Styles.textStyle,
-                    // ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: TextField(
+                      width: MediaQuery.of(context).size.width *
+                          AppLayout.getWidth(0.7),
+                      child: SearchField(
                         controller: start_station,
-                        decoration: InputDecoration(
+                        searchInputDecoration: const InputDecoration(
                           hintText: "Start",
                           border: InputBorder.none,
-                          // hintStyle: Styles.headLine3.copyWith(fontSize: 18),
                         ),
-                        style: const TextStyle(fontSize: 20),
-                        cursorColor: Styles.secondaryColor,
+                        searchStyle: const TextStyle(fontSize: 20),
+                        suggestions: station_List
+                            .map(
+                              (e) => SearchFieldListItem(
+                                e,
+                                child: Text(e),
+                              ),
+                            )
+                            .toList(),
                       ),
                     ),
                   ],
@@ -135,17 +130,27 @@ class SearchScreen extends StatelessWidget {
                     //   text,
                     //   style: Styles.textStyle,
                     // ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: TextField(
-                        controller: end_station,
-                        decoration: const InputDecoration(
-                          hintText: "End",
-                          border: InputBorder.none,
-                          // hintStyle: Styles.headLine3.copyWith(fontSize: 18),
+                    Container(
+                      padding: EdgeInsets.only(left: AppLayout.getWidth(5)),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width *
+                            AppLayout.getWidth(0.7),
+                        child: SearchField(
+                          controller: end_station,
+                          searchInputDecoration: const InputDecoration(
+                            hintText: "End",
+                            border: InputBorder.none,
+                          ),
+                          searchStyle: const TextStyle(fontSize: 20),
+                          suggestions: station_List
+                              .map(
+                                (e) => SearchFieldListItem(
+                                  e,
+                                  child: Text(e),
+                                ),
+                              )
+                              .toList(),
                         ),
-                        style: const TextStyle(fontSize: 20),
-                        cursorColor: Styles.secondaryColor,
                       ),
                     ),
                   ],
