@@ -7,7 +7,14 @@ import 'package:gap/gap.dart';
 
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
-  const TicketView({Key? key, required this.ticket}) : super(key: key);
+  final String start_point;
+  final String end_point;
+  const TicketView(
+      {Key? key,
+      required this.ticket,
+      this.start_point = "",
+      this.end_point = ""})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
@@ -164,21 +171,21 @@ class TicketView extends StatelessWidget {
                           // width: 100,
                           width: AppLayout.getWidth(100),
                           child: Text(
-                            ticket['from']['name'],
+                            start_point,
                             style: Styles.headLine4
                                 .copyWith(color: Styles.secondaryColor),
                           ),
                         ),
-                        Text(
-                          '01H 22M',
-                          style: Styles.headLine4
-                              .copyWith(color: Styles.secondaryColor),
-                        ),
+                        // Text(
+                        //   '01H 22M',
+                        //   style: Styles.headLine4
+                        //       .copyWith(color: Styles.secondaryColor),
+                        // ),
                         SizedBox(
                           // width: 100,
                           width: AppLayout.getWidth(100),
                           child: Text(
-                            ticket['to']['name'],
+                            end_point,
                             textAlign: TextAlign.end,
                             style: Styles.headLine4
                                 .copyWith(color: Styles.secondaryColor),

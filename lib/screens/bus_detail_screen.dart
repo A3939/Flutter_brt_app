@@ -11,10 +11,17 @@ import '../utils/app_layout.dart';
 
 class BusDetails extends StatelessWidget {
   const BusDetails(
-      {Key? key, required this.start_point, required this.end_point})
+      {Key? key,
+      required this.start_point,
+      required this.end_point,
+      required this.bus_list})
       : super(key: key);
   final TextEditingController start_point;
   final TextEditingController end_point;
+  final List<Map<String, dynamic>> bus_list;
+
+  @override
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
@@ -82,10 +89,12 @@ class BusDetails extends StatelessWidget {
               vertical: AppLayout.getWidth(25),
             ),
             child: Column(
-              children: ticketList
+              children: bus_list
                   .map(
                     (singleTicket) => TicketView(
                       ticket: singleTicket,
+                      start_point: start_point.text,
+                      end_point: end_point.text,
                     ),
                   )
                   .toList(),

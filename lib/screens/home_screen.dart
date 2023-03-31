@@ -67,6 +67,8 @@ class HomeScreen extends StatelessWidget {
                     .map(
                       (singleTicket) => TicketView(
                         ticket: singleTicket,
+                        end_point: "",
+                        start_point: "",
                       ),
                     )
                     .toList()),

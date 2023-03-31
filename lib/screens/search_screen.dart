@@ -10,12 +10,11 @@ import '../widgets/double_text_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
-    final size = AppLayout.getSize(context);
-    var start_station = TextEditingController();
-    var end_station = TextEditingController();
+    var size = AppLayout.getSize(context);
+    TextEditingController start_station = TextEditingController();
+    TextEditingController end_station = TextEditingController();
 
     return Scaffold(
       backgroundColor: Styles.bgColor,
@@ -126,10 +125,6 @@ class SearchScreen extends StatelessWidget {
                     Gap(
                       AppLayout.getWidth(20),
                     ),
-                    // Text(
-                    //   text,
-                    //   style: Styles.textStyle,
-                    // ),
                     Container(
                       padding: EdgeInsets.only(left: AppLayout.getWidth(5)),
                       child: SizedBox(
@@ -162,30 +157,7 @@ class SearchScreen extends StatelessWidget {
           Gap(
             AppLayout.getHeight(25),
           ),
-          // Container(
-          //   padding: EdgeInsets.symmetric(
-          //     vertical: AppLayout.getWidth(18),
-          //     horizontal: AppLayout.getWidth(15),
-          //   ),
-          //   decoration: BoxDecoration(
-          //     color: Styles.secondaryColor,
-          //     borderRadius: BorderRadius.circular(
-          //       AppLayout.getWidth(10),
-          //     ),
-          //   ),
-          //   child: Center(
-          //     child: Text(
-          //       "Find Bus",
-          //       style: Styles.textStyle.copyWith(
-          //         color: Styles.primaryColor,
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          // ButtonWidget(
-          //   start_point: start_station,
-          //   end_point: end_station,
-          // ),
+
           Container(
             padding: EdgeInsets.symmetric(
               vertical: AppLayout.getWidth(18),
@@ -207,12 +179,15 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
+                  List<Map<String, dynamic>> data =
+                      FindBusDetails(start_station.text, end_station.text);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => BusDetails(
                         end_point: end_station,
                         start_point: start_station,
+                        bus_list: data,
                       ),
                     ),
                   );
@@ -244,5 +219,22 @@ class SearchScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  List<Map<String, dynamic>> FindBusDetails(start_point, end_point) {
+    var bus_list = [];
+    List<Map<String, dynamic>> customer_bus_list = [];
+    var start_index;
+
+    for (var bus in ticketList) {
+      for (var route in bus["route"]) {
+        if (route == start_point) {
+          customer_bus_list.add(bus);
+          break;
+        }
+      }
+    }
+    print(customer_bus_list);
+    return customer_bus_list;
   }
 }
