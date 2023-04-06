@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                     )
                     .toList()),
           ),
-          const Gap(50),
+          // const Gap(50),
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: const AppDoubleTextWidget(

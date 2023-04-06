@@ -5,7 +5,7 @@ Color primary = const Color(0xFFFFFFFF);
 class Styles {
   static Color primaryColor = primary;
   static Color secondaryColor = const Color(0xff1C203D);
-  static Color effectColor = const Color(0xFF34E4D0);
+  static Color effectColor = const Color(0xff1C203D);
   static Color tagColor = const Color(0xFF6C6C6C);
   static Color bgColor = const Color(0xFFeeedf2);
 

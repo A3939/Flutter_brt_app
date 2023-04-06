@@ -20,7 +20,7 @@ class TicketView extends StatelessWidget {
     final size = AppLayout.getSize(context);
     return SizedBox(
       width: AppLayout.getWidth(345),
-      height: size.width * AppLayout.getHeight(0.63),
+      height: size.width * AppLayout.getHeight(0.6),
       child: MaterialButton(
         onPressed: () {
           Navigator.push(

@@ -158,19 +158,19 @@ class SearchScreen extends StatelessWidget {
             AppLayout.getHeight(25),
           ),
 
-          Container(
-            padding: EdgeInsets.symmetric(
-              vertical: AppLayout.getWidth(18),
-              horizontal: AppLayout.getWidth(15),
-            ),
-            decoration: BoxDecoration(
-              color: Styles.secondaryColor,
-              borderRadius: BorderRadius.circular(
-                AppLayout.getWidth(10),
+          MaterialButton(
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: AppLayout.getWidth(18),
+                horizontal: AppLayout.getWidth(15),
               ),
-            ),
-            child: Center(
-              child: MaterialButton(
+              decoration: BoxDecoration(
+                color: Styles.secondaryColor,
+                borderRadius: BorderRadius.circular(
+                  AppLayout.getWidth(10),
+                ),
+              ),
+              child: Center(
                 child: Text(
                   'Find Route',
                   style: TextStyle(
@@ -178,22 +178,22 @@ class SearchScreen extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                onPressed: () {
-                  List<Map<String, dynamic>> data =
-                      FindBusDetails(start_station.text, end_station.text);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BusDetails(
-                        end_point: end_station,
-                        start_point: start_station,
-                        bus_list: data,
-                      ),
-                    ),
-                  );
-                },
               ),
             ),
+            onPressed: () {
+              List<Map<String, dynamic>> data =
+                  FindBusDetails(start_station.text, end_station.text);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BusDetails(
+                    end_point: end_station,
+                    start_point: start_station,
+                    bus_list: data,
+                  ),
+                ),
+              );
+            },
           ),
           Gap(
             AppLayout.getHeight(25),
@@ -205,7 +205,7 @@ class SearchScreen extends StatelessWidget {
 
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            padding: const EdgeInsets.only(left: 20),
+            // padding: const EdgeInsets.only(left: 20),
             child: Column(
               children: ticketList
                   .map(
