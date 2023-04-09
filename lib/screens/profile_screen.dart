@@ -26,10 +26,10 @@ class ProfileScreen extends StatelessWidget {
             ),
             child: const NameWidget(name: "Developer"),
           ),
-          const Gap(30),
+          // const Gap(30),
           Container(
-            height: 115,
-            width: 115,
+            height: AppLayout.getHeight(100),
+            width: AppLayout.getWidth(100),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               image: const DecorationImage(
@@ -38,38 +38,42 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          const Gap(30),
+          // const Gap(30),
           Container(
             margin: EdgeInsets.all(
-              AppLayout.getWidth(20),
+              AppLayout.getWidth(25),
             ),
-            child: Column(
-              children: const [
-                AboutListWidget(
-                  icon: Icons.person_2_rounded,
-                  text: "Aditya Patel",
-                ),
-                const Gap(20),
-                AboutListWidget(
-                  icon: Icons.local_activity,
-                  text: "Full Stack",
-                ),
-                const Gap(20),
-                AboutListWidget(
-                  icon: Icons.local_library_rounded,
-                  text: "Bachelor of Engineering",
-                ),
-                const Gap(20),
-                AboutListWidget(
-                  icon: Icons.local_phone_rounded,
-                  text: "+91 9427303939",
-                ),
-                const Gap(20),
-                AboutListWidget(
-                  icon: Icons.email_rounded,
-                  text: "adityagpatel59@gmail.com",
-                ),
-              ],
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              // padding: const EdgeInsets.only(left: 20),
+              child: Column(
+                children: const [
+                  AboutListWidget(
+                    icon: Icons.person_2_rounded,
+                    text: "Aditya Patel",
+                  ),
+                  const Gap(20),
+                  AboutListWidget(
+                    icon: Icons.local_activity,
+                    text: "Full Stack",
+                  ),
+                  const Gap(20),
+                  AboutListWidget(
+                    icon: Icons.local_library_rounded,
+                    text: "Bachelor of Engineering",
+                  ),
+                  const Gap(20),
+                  AboutListWidget(
+                    icon: Icons.local_phone_rounded,
+                    text: "+91 9427303939",
+                  ),
+                  const Gap(20),
+                  AboutListWidget(
+                    icon: Icons.email_rounded,
+                    text: "adityagpatel59@gmail.com",
+                  ),
+                ],
+              ),
             ),
           )
         ],

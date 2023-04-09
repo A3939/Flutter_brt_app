@@ -35,7 +35,7 @@ class AboutListWidget extends StatelessWidget {
                 color: Styles.secondaryColor,
               ),
               Gap(
-                AppLayout.getWidth(20),
+                AppLayout.getWidth(15),
               ),
               // Text(
               //   text,
