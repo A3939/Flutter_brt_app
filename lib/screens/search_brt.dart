@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:brt_app/screens/bus_detail_screen.dart';
 import 'package:brt_app/utils/app_info_list.dart';
@@ -10,8 +11,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gap/gap.dart';
+import 'package:hive/hive.dart';
 import 'package:searchfield/searchfield.dart';
 import 'package:substring_highlight/substring_highlight.dart';
+
+import '../widgets/route_text_widget.dart';
 
 class SearchBRT extends StatefulWidget {
   const SearchBRT({super.key});
@@ -25,6 +29,7 @@ class _SearchBRTState extends State<SearchBRT> {
   late List<String> autoComplateData;
   late TextEditingController start_station;
   late TextEditingController end_station;
+  final _recentData = Hive.box('recentData');
   Future fetchAutoCompleteData() async {
     setState(() {
       isLoading = true;
@@ -43,10 +48,16 @@ class _SearchBRTState extends State<SearchBRT> {
     });
   }
 
+  void getRecentSearch() {
+    var data = _recentData.get(1);
+    print(data);
+  }
+
   @override
   void initState() {
     super.initState();
     fetchAutoCompleteData();
+    getRecentSearch();
   }
 
   @override
@@ -284,6 +295,14 @@ class _SearchBRTState extends State<SearchBRT> {
               ),
             ),
             onPressed: () {
+              final _recentData = Hive.box('recentData');
+              Map<String, dynamic> myObject = {
+                'start': start_station.text,
+                'end': end_station.text
+              };
+              var serachHistoryData = _recentData.get(1);
+              serachHistoryData.add(myObject);
+              _recentData.put(1, serachHistoryData);
               final scaffold = ScaffoldMessenger.of(context);
               scaffold.showSnackBar(
                 SnackBar(
@@ -314,39 +333,37 @@ class _SearchBRTState extends State<SearchBRT> {
             bigText: "Recent searches",
             smallText: "",
           ),
-
-          // SingleChildScrollView(
-          //   scrollDirection: Axis.vertical,
-          //   // padding: const EdgeInsets.only(left: 20),
-          //   child: Column(
-          //     children: ticketList
-          //         .map(
-          //           (singleTicket) => RouteTextWidget(
-          //             ticket: singleTicket,
-          //           ),
-          //         )
-          //         .toList(),
-          //   ),
-          // ),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            // padding: const EdgeInsets.only(left: 20),
+            child: Column(
+              children: ticketList
+                  .map(
+                    (singleTicket) => RouteTextWidget(
+                      ticket: singleTicket,
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-List<Map<String, dynamic>> FindBusDetails(start_point, end_point) {
-  var bus_list = [];
-  List<Map<String, dynamic>> customer_bus_list = [];
-  var start_index;
+List<Map<String, dynamic>> FindBusDetails(startPoint, endPoint) {
+  var busList = [];
+  List<Map<String, dynamic>> customerBusList = [];
+  var startIndex;
 
   for (var bus in ticketList) {
     for (var route in bus["route"]) {
-      if (route == start_point) {
-        customer_bus_list.add(bus);
+      if (route == startPoint) {
+        customerBusList.add(bus);
         break;
       }
     }
   }
-  print(customer_bus_list);
-  return customer_bus_list;
+  return customerBusList;
 }
