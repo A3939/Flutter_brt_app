@@ -1,6 +1,7 @@
 import 'package:brt_app/screens/bus_route_screen.dart';
 import 'package:brt_app/screens/home_screen.dart';
 import 'package:brt_app/screens/profile_screen.dart';
+import 'package:brt_app/screens/search_brt.dart';
 import 'package:brt_app/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -19,7 +20,8 @@ class _BottomBarState extends State<BottomBar> {
 
   static final List<Widget> _widgetOption = <Widget>[
     const HomeScreen(),
-    const SearchScreen(),
+    const SearchBRT(),
+    // const SearchScreen(),
     // const Text("Setting"),
     const ProfileScreen(),
     // const BusRouteScreen()
