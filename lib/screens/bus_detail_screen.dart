@@ -1,12 +1,8 @@
 import 'package:brt_app/screens/ticket_view.dart';
 import 'package:brt_app/utils/app_styles.dart';
-import 'package:brt_app/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gap/gap.dart';
 
-import '../utils/app_info_list.dart';
 import '../utils/app_layout.dart';
 
 class BusDetails extends StatelessWidget {

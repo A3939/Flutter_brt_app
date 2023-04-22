@@ -1,4 +1,3 @@
-import 'package:brt_app/widgets/thick_container.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -7,7 +6,7 @@ import '../utils/app_styles.dart';
 
 class RouteTextWidget extends StatelessWidget {
   const RouteTextWidget({Key? key, required this.ticket}) : super(key: key);
-  final Map<String, dynamic> ticket;
+  final Map<dynamic, dynamic> ticket;
 
   @override
   Widget build(BuildContext context) {
@@ -30,91 +29,109 @@ class RouteTextWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      ticket['from']['code'],
+                      // ticket['from']['code'],
+                      ticket["start"],
+                      // "data",
                       style: Styles.headLine3.copyWith(
                         color: Styles.secondaryColor,
                       ),
+                      softWrap: true,
                     ),
                     Expanded(child: Container()),
-                    ThickContainer(),
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          SizedBox(
-                            height: AppLayout.getHeight(24),
-                            child: LayoutBuilder(
-                              builder: (BuildContext context,
-                                  BoxConstraints constraints) {
-                                print(constraints.constrainWidth());
-                                return Flex(
-                                  direction: Axis.horizontal,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: List.generate(
-                                    (constraints.constrainWidth() / 6).floor(),
-                                    (index) => SizedBox(
-                                      width: 3,
-                                      height: 1,
-                                      child: DecoratedBox(
-                                        decoration: BoxDecoration(
-                                            color: Styles.secondaryColor),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                          Center(
-                            child: Icon(
-                              Icons.local_taxi_rounded,
-                              color: Styles.secondaryColor,
-                            ),
-                          ),
-                        ],
+                    // ThickContainer(),
+                    // Expanded(
+                    //   child: Stack(
+                    //     children: [
+                    //       SizedBox(
+                    //         height: AppLayout.getHeight(24),
+                    //         // width: AppLayout.getWidth(50),
+                    //         child: LayoutBuilder(
+                    //           builder: (BuildContext context,
+                    //               BoxConstraints constraints) {
+                    //             print(constraints.constrainWidth());
+                    //             return Flex(
+                    //               direction: Axis.horizontal,
+                    //               mainAxisAlignment:
+                    //                   MainAxisAlignment.spaceBetween,
+                    //               mainAxisSize: MainAxisSize.max,
+                    //               children: List.generate(
+                    //                 (constraints.constrainWidth() / 6).floor(),
+                    //                 (index) => SizedBox(
+                    //                   width: 3,
+                    //                   height: 1,
+                    //                   child: DecoratedBox(
+                    //                     decoration: BoxDecoration(
+                    //                         color: Styles.secondaryColor),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //             );
+                    //           },
+                    //         ),
+                    //       ),
+                    //       Center(
+                    //         child: Icon(
+                    //           Icons.local_taxi_rounded,
+                    //           color: Styles.secondaryColor,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // ThickContainer(),
+                    Text(
+                      // ticket['to']['code'],
+                      // ticket["end"],
+                      "to",
+                      style: Styles.headLine3.copyWith(
+                        color: Styles.secondaryColor,
                       ),
+                      softWrap: true,
                     ),
-                    ThickContainer(),
                     Expanded(child: Container()),
                     Text(
-                      ticket['to']['code'],
+                      // ticket['to']['code'],
+                      ticket["end"],
+                      // "data",
                       style: Styles.headLine3.copyWith(
                         color: Styles.secondaryColor,
                       ),
+                      softWrap: true,
                     )
                   ],
                 ),
                 const Gap(10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      // width: 100,
-                      width: AppLayout.getWidth(100),
-                      child: Text(
-                        ticket['from']['name'],
-                        style: Styles.headLine4
-                            .copyWith(color: Styles.secondaryColor),
-                      ),
-                    ),
-                    Text(
-                      '22 MIN',
-                      style: Styles.headLine4
-                          .copyWith(color: Styles.secondaryColor),
-                    ),
-                    SizedBox(
-                      // width: 100,
-                      width: AppLayout.getWidth(100),
-                      child: Text(
-                        ticket['to']['name'],
-                        textAlign: TextAlign.end,
-                        style: Styles.headLine4
-                            .copyWith(color: Styles.secondaryColor),
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     SizedBox(
+                //       // width: 100,
+                //       width: AppLayout.getWidth(100),
+                //       child: Text(
+                //         // ticket['from']['name'],
+                //         "data",
+                //         style: Styles.headLine4
+                //             .copyWith(color: Styles.secondaryColor),
+                //       ),
+                //     ),
+                //     Text(
+                //       '22 MIN',
+                //       style: Styles.headLine4
+                //           .copyWith(color: Styles.secondaryColor),
+                //     ),
+                //     SizedBox(
+                //       // width: 100,
+                //       width: AppLayout.getWidth(100),
+                //       child: Text(
+                //         // ticket['to']['name'],
+                //         "data",
+                //         textAlign: TextAlign.end,
+                //         style: Styles.headLine4
+                //             .copyWith(color: Styles.secondaryColor),
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),

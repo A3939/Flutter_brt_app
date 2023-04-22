@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:brt_app/screens/bus_detail_screen.dart';
 import 'package:brt_app/utils/app_info_list.dart';
@@ -8,11 +7,8 @@ import 'package:brt_app/utils/app_styles.dart';
 import 'package:brt_app/widgets/double_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gap/gap.dart';
 import 'package:hive/hive.dart';
-import 'package:searchfield/searchfield.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
 import '../widgets/route_text_widget.dart';
@@ -26,9 +22,12 @@ class SearchBRT extends StatefulWidget {
 
 class _SearchBRTState extends State<SearchBRT> {
   bool isLoading = false;
+  bool isHistroy = false;
   late List<String> autoComplateData;
   late TextEditingController start_station;
   late TextEditingController end_station;
+  dynamic myValue = null;
+  late List<dynamic> searchHistroy;
   final _recentData = Hive.box('recentData');
   Future fetchAutoCompleteData() async {
     setState(() {
@@ -49,8 +48,19 @@ class _SearchBRTState extends State<SearchBRT> {
   }
 
   void getRecentSearch() {
-    var data = _recentData.get(1);
-    print(data);
+    if (_recentData.get(1) != null) {
+      if (_recentData.get(1).length >= 5) {
+        _recentData.delete(1);
+      }
+    }
+    if (_recentData.get(1) != null) {
+      isHistroy = true;
+      // _recentData.delete(1);
+
+      searchHistroy = _recentData.get(1);
+    } else {
+      isHistroy = false;
+    }
   }
 
   @override
@@ -151,15 +161,15 @@ class _SearchBRTState extends State<SearchBRT> {
                       );
                     },
                     onSelected: (selectedString) {
-                      final scaffold = ScaffoldMessenger.of(context);
-                      scaffold.showSnackBar(
-                        SnackBar(
-                          content: Text(selectedString),
-                          action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: scaffold.hideCurrentSnackBar),
-                        ),
-                      );
+                      // final scaffold = ScaffoldMessenger.of(context);
+                      // scaffold.showSnackBar(
+                      //   SnackBar(
+                      //     content: Text(selectedString),
+                      //     action: SnackBarAction(
+                      //         label: 'OK',
+                      //         onPressed: scaffold.hideCurrentSnackBar),
+                      //   ),
+                      // );
                       FocusScope.of(context).unfocus();
                     },
                     fieldViewBuilder:
@@ -237,15 +247,15 @@ class _SearchBRTState extends State<SearchBRT> {
                       );
                     },
                     onSelected: (selectedString) {
-                      final scaffold = ScaffoldMessenger.of(context);
-                      scaffold.showSnackBar(
-                        SnackBar(
-                          content: Text(selectedString),
-                          action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: scaffold.hideCurrentSnackBar),
-                        ),
-                      );
+                      // final scaffold = ScaffoldMessenger.of(context);
+                      // scaffold.showSnackBar(
+                      //   SnackBar(
+                      //     content: Text(selectedString),
+                      //     action: SnackBarAction(
+                      //         label: 'OK',
+                      //         onPressed: scaffold.hideCurrentSnackBar),
+                      //   ),
+                      // );
                       FocusScope.of(context).unfocus();
                     },
                     fieldViewBuilder:
@@ -300,17 +310,22 @@ class _SearchBRTState extends State<SearchBRT> {
                 'start': start_station.text,
                 'end': end_station.text
               };
-              var serachHistoryData = _recentData.get(1);
-              serachHistoryData.add(myObject);
-              _recentData.put(1, serachHistoryData);
-              final scaffold = ScaffoldMessenger.of(context);
-              scaffold.showSnackBar(
-                SnackBar(
-                  content: Text(start_station.text + " to " + end_station.text),
-                  action: SnackBarAction(
-                      label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
-                ),
-              );
+              if (_recentData.get(1) != null) {
+                var serachHistoryData = _recentData.get(1);
+                serachHistoryData.add(myObject);
+                _recentData.put(1, serachHistoryData);
+              } else {
+                var searchdata = [myObject];
+                _recentData.put(1, searchdata);
+              }
+              // final scaffold = ScaffoldMessenger.of(context);
+              // scaffold.showSnackBar(
+              //   SnackBar(
+              //     content: Text(start_station.text + " to " + end_station.text),
+              //     action: SnackBarAction(
+              //         label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
+              //   ),
+              // );
               FocusScope.of(context).unfocus();
               List<Map<String, dynamic>> data =
                   FindBusDetails(start_station.text, end_station.text);
@@ -333,18 +348,29 @@ class _SearchBRTState extends State<SearchBRT> {
             bigText: "Recent searches",
             smallText: "",
           ),
+          Gap(
+            AppLayout.getHeight(10),
+          ),
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             // padding: const EdgeInsets.only(left: 20),
-            child: Column(
-              children: ticketList
-                  .map(
-                    (singleTicket) => RouteTextWidget(
-                      ticket: singleTicket,
-                    ),
+            child: isHistroy
+                ? Column(
+                    children: searchHistroy
+                        .map(
+                          // (singleTicket) => Text(
+                          //   singleTicket.toString(),
+                          // ),
+                          (singleTicket) => RouteTextWidget(
+                            ticket: singleTicket,
+                          ),
+                        )
+                        .toList(),
                   )
-                  .toList(),
-            ),
+                : Text(
+                    "No recent search...",
+                    style: Styles.headLine3,
+                  ),
           ),
         ],
       ),

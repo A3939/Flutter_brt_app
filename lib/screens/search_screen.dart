@@ -1,10 +1,10 @@
 import 'package:brt_app/screens/bus_detail_screen.dart';
 import 'package:brt_app/utils/app_layout.dart';
 import 'package:brt_app/utils/app_styles.dart';
-import 'package:brt_app/widgets/route_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:searchfield/searchfield.dart';
+
 import '../utils/app_info_list.dart';
 import '../widgets/double_text_widget.dart';
 
@@ -203,19 +203,19 @@ class SearchScreen extends StatelessWidget {
             smallText: "",
           ),
 
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            // padding: const EdgeInsets.only(left: 20),
-            child: Column(
-              children: ticketList
-                  .map(
-                    (singleTicket) => RouteTextWidget(
-                      ticket: singleTicket,
-                    ),
-                  )
-                  .toList(),
-            ),
-          ),
+          // SingleChildScrollView(
+          //   scrollDirection: Axis.vertical,
+          //   // padding: const EdgeInsets.only(left: 20),
+          //   child: Column(
+          //     children: ticketList
+          //         .map(
+          //           (singleTicket) => RouteTextWidget(
+          //             ticket: singleTicket,
+          //           ),
+          //         )
+          //         .toList(),
+          //   ),
+          // ),
         ],
       ),
     );

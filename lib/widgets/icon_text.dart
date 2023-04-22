@@ -1,7 +1,4 @@
-import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gap/gap.dart';
 
 import '../utils/app_layout.dart';

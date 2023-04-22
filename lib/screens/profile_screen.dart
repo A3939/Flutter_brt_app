@@ -1,13 +1,8 @@
-import 'dart:math';
-
 import 'package:brt_app/utils/app_layout.dart';
 import 'package:brt_app/utils/app_styles.dart';
 import 'package:brt_app/widgets/about_list_widget.dart';
-import 'package:brt_app/widgets/button_widget.dart';
 import 'package:brt_app/widgets/name_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:gap/gap.dart';
 
 class ProfileScreen extends StatelessWidget {
