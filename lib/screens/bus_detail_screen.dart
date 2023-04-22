@@ -12,8 +12,8 @@ class BusDetails extends StatelessWidget {
       required this.end_point,
       required this.bus_list})
       : super(key: key);
-  final TextEditingController start_point;
-  final TextEditingController end_point;
+  final String start_point;
+  final String end_point;
   final List<Map<String, dynamic>> bus_list;
 
   @override
@@ -41,7 +41,7 @@ class BusDetails extends StatelessWidget {
               children: [
                 Text(
                   // "Himatlal Park to \nRanip Cross Road",
-                  start_point.text + " to \n" + end_point.text,
+                  start_point.toString() + " to \n" + end_point.toString(),
                   style: Styles.headLine3.copyWith(
                     color: Styles.primaryColor,
                     fontSize: 18,
@@ -89,8 +89,8 @@ class BusDetails extends StatelessWidget {
                   .map(
                     (singleTicket) => TicketView(
                       ticket: singleTicket,
-                      start_point: start_point.text,
-                      end_point: end_point.text,
+                      start_point: start_point,
+                      end_point: end_point,
                     ),
                   )
                   .toList(),

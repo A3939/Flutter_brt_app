@@ -333,8 +333,8 @@ class _SearchBRTState extends State<SearchBRT> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => BusDetails(
-                    end_point: end_station,
-                    start_point: start_station,
+                    end_point: end_station.text,
+                    start_point: start_station.text,
                     bus_list: data,
                   ),
                 ),
